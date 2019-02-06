@@ -1,13 +1,26 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User: bcrypt
     providers:
-        in_memory: { memory: ~ }
+        app_user_provider:
+            entity: { class: App\Entity\User, property: username }
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
             anonymous: true
+            guard:
+                authenticators:
+                    - App\Security\FormAuthenticator
+
+            logout:
+                path: app_logout
+
+            remember_me:
+                secret:   '%kernel.secret%'
+                lifetime: 2592000 # 30 jours, c'est optionnel, par defaut c'est 1 an
 
             # activate different ways to authenticate
 
