@@ -27,14 +27,9 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string")
      */
-    private $Gamme;
-
-    /**
-     * @ORM\Column(type="array")
-     */
-    private $Photos = [];
+    private $Photos;
 
     /**
      * @ORM\Column(type="integer")
@@ -85,27 +80,14 @@ class Product
         return $this;
     }
 
-    public function getGamme(): ?string
-    {
-        return $this->Gamme;
-    }
-
-    public function setGamme(string $Gamme): self
-    {
-        $this->Gamme = $Gamme;
-
-        return $this;
-    }
-
-    public function getPhotos(): ?array
+    public function getPhotos(): ?string
     {
         return $this->Photos;
     }
 
-    public function setPhotos(array $Photos): self
+    public function setPhotos(string $Photos): self
     {
         $this->Photos = $Photos;
-
         return $this;
     }
 
