@@ -9,13 +9,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Bienvenue sur Puntos Y Vueltas !</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/puntosyvueltas/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/puntosyvueltas/templates/default/login.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    {% else %}
         <a href="{{ path('app_login') }}">Se connecter</a>
-    </ul>
+    {% endif %}
 </div>
 {% endblock %}

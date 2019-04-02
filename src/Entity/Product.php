@@ -126,4 +126,16 @@ class Product
 
         return $this;
     }
+
+    public function getGamme(): ?Gamme
+    {
+        return $this->gamme;
+    }
+
+    public function setGamme(?Gamme $gamme): self
+    {
+        $this->gamme = $gamme;
+
+        return $this;
+    }
 }

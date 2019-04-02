@@ -24,8 +24,7 @@
         {% for product in products %}
             <tr>
                 <td>{{ product.id }}</td>
-                {{ product.gamme.id }}
-                <td>Gamme du produit</td>
+                <td>{{ product.gamme ? product.gamme.nom : '' }}</td>
                 <td>{{ product.titre }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>
