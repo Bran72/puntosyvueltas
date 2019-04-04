@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -27,11 +28,6 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="string")
-     */
-    private $Photos;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $Prix;
@@ -50,6 +46,11 @@ class Product
      * @ORM\ManyToOne(targetEntity="App\Entity\Gamme", inversedBy="products")
      */
     private $gamme;
+
+    /**
+     * @ORM\Column(type="json", nullable=true)
+     */
+    private $Photos = [];
 
     public function getId(): ?int
     {
@@ -77,17 +78,6 @@ class Product
     {
         $this->description = $description;
 
-        return $this;
-    }
-
-    public function getPhotos(): ?string
-    {
-        return $this->Photos;
-    }
-
-    public function setPhotos(string $Photos): self
-    {
-        $this->Photos = $Photos;
         return $this;
     }
 
@@ -135,6 +125,18 @@ class Product
     public function setGamme(?Gamme $gamme): self
     {
         $this->gamme = $gamme;
+
+        return $this;
+    }
+
+    public function getPhotos(): ?array
+    {
+        return $this->Photos;
+    }
+
+    public function setPhotos(array $Photos): self
+    {
+        $this->Photos = $Photos;
 
         return $this;
     }

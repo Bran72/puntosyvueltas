@@ -27,7 +27,12 @@
                 <td>{{ product.gamme ? product.gamme.nom : '' }}</td>
                 <td>{{ product.titre }}</td>
                 <td>{{ product.description }}</td>
-                <td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>
+                <td>
+                {% for photos in product.photos %}
+                    {{ photos }}
+                {% endfor %}
+                </td>
+                {#<td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>#}
                 <td>{{ product.Prix }}</td>
                 <td>{{ product.Fil }}</td>
                 <td>{{ product.Surmesure ? 'Yes' : 'No' }}</td>

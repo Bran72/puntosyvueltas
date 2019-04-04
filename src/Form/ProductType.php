@@ -6,7 +6,9 @@ use App\Entity\Gamme;
 use App\Entity\Product;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProductType extends AbstractType
@@ -16,12 +18,42 @@ class ProductType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
-            ->add('Photos')
             ->add('Prix')
             ->add('Fil')
             ->add('Surmesure')
             ->add('gamme', EntityType::class, ['label' => 'Choisir une gamme', 'choice_label' => 'nom', 'class' => Gamme::class, 'label_attr' => array('class' => 'choose_gamme')])
+            ->add('Photos', FileType::class, [
+                'multiple' => true,
+                'by_reference' => false,
+                'required' => false,
+                'attr'     => [
+                    'accept' => 'image/*',
+                ]
+            ])
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function ($event) {
+            $builder = $event->getForm(); // The FormBuilder
+            $entity = $event->getData(); // The Form Object
+
+            if($entity["Photos"] == [] || !(isset($entity))){
+                dump('empty photos: get them from Database');
+                $builder
+                ->add('Photos', FileType::class, [
+                    'multiple' => true,
+                    'by_reference' => false,
+                    'required' => false,
+                    'attr'     => [
+                        'accept' => 'image/*',
+                    ]
+                ])
+                ->add('titre');
+            }else{
+                dump('you can update photos');
+            }
+            dump($entity);
+            dump($entity["Photos"]);
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver)

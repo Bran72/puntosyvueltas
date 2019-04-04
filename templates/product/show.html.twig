@@ -25,7 +25,10 @@
             </tr>
             <tr>
                 <th>Photos</th>
-                <td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>
+                {% for photos in product.photos %}
+                    {{ dump(photos) }}
+                {% endfor %}
+                {#<td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>#}
             </tr>
             <tr>
                 <th>Prix</th>

@@ -24,7 +24,7 @@ class Gamme
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="gamme")
+     * @ORM\OneToMany(targetEntity="App\Entity\Product", mappedBy="gamme", orphanRemoval=true)
      */
     private $products;
 
