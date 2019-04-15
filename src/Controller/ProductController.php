@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/product")
+ * @Route("/admin/product")
  */
 class ProductController extends AbstractController
 {
@@ -38,6 +38,8 @@ class ProductController extends AbstractController
         $i = 0;
         $photos = [];
         if ($form->isSubmitted() && $form->isValid()) {
+            $date = new \DateTime();
+            $product->setDate($date);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($product);
             $entityManager->flush();

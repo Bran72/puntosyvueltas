@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} | Atelier{% endblock %}
+
+{% block bodyID %}atelier{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="container marg-top-40">
+            <a href="{{ path('index') }}" class="pad-10 dark-grey back"
+            ><i class="fas fa-angle-left"></i> Retour au créations</a
+            >
+            <h2 class="lighter-grey ft-s-30 ft-w-100">
+                L'<i class="primary">A</i>telier
+            </h2>
+            <div class="md-6 marg-top-20">
+                <div class="head">
+                    <img src="{{ asset('assets/img/aiguilles.jpg') }}" alt="" />
+                    <h3 class="ft-s-30 ft-w-400">
+                        La passion au bout des aiguilles...
+                    </h3>
+                </div>
+                <br />
+                <p class="dark-grey ft-w-300 marg-top-10">
+                    L’Atelier est né de très anciennes
+                    <strong class="primary">“passions”.</strong><br />
+                    <br />
+                    <strong class="ft-w-600"
+                    >Passion des personnes que l’on aime,</strong
+                    >
+                    qui méritent chacune une attention particulière, un cadeau unique,
+                    une pièce originale et personnalisée, toujours réalisés
+                    sur-mesure. <br />
+                    <br />
+                    <strong class="ft-w-600"
+                    >Passion des belles et nobles matières.</strong
+                    >
+                    Intemporelles. Durables.
+                    <br />
+                    A l’incomparable rendu. <br />
+                    <br />
+                    <strong class="ft-w-600">Passion des défis&nbsp;:</strong
+                    >&nbsp;rechercher, travailler, apprendre, s’améliorer. Créer. Et
+                    transmettre. <br />
+                    <br />
+                    <strong class="ft-w-600">Passion du temps&nbsp;:</strong
+                    >&nbsp;celui que l’on dédie entièrement à un ouvrage artisanal,
+                    qui accompagnera longtemps la/le destinataire. <br />
+                </p>
+            </div>
+            <div class="md-4 md-offset-2 marg-top-20">
+                <img src="{{ asset('assets/img/christelle.jpg') }}" alt="" />
+                <br />
+                <p class="dark-grey ft-w-300 marg-top-40">
+                    Deux aiguilles. Des centaines de mètres de fil. De la patience. De
+                    la concentration. <br />
+                    <br />
+                    Et forcément, un peu
+                    <strong class="primary">“d’humain”...</strong>
+                </p>
+            </div>
+        </div>
+    </main>
+    {#
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    {% else %}
+        <a href="{{ path('app_login') }}">Se connecter</a>
+    {% endif %}
+    #}
+{% endblock %}

@@ -52,6 +52,26 @@ class Product
      */
     private $Photos = [];
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $dimensions;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $duree;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $taille_fils;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $date;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +157,54 @@ class Product
     public function setPhotos(array $Photos): self
     {
         $this->Photos = $Photos;
+
+        return $this;
+    }
+
+    public function getDimensions(): ?string
+    {
+        return $this->dimensions;
+    }
+
+    public function setDimensions(?string $dimensions): self
+    {
+        $this->dimensions = $dimensions;
+
+        return $this;
+    }
+
+    public function getDuree(): ?string
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(?string $duree): self
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    public function getTailleFils(): ?string
+    {
+        return $this->taille_fils;
+    }
+
+    public function setTailleFils(?string $taille_fils): self
+    {
+        $this->taille_fils = $taille_fils;
+
+        return $this;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
 
         return $this;
     }

@@ -22,6 +22,9 @@ class ProductType extends AbstractType
             ->add('Fil')
             ->add('Surmesure')
             ->add('gamme', EntityType::class, ['label' => 'Choisir une gamme', 'choice_label' => 'nom', 'class' => Gamme::class, 'label_attr' => array('class' => 'choose_gamme')])
+            ->add('dimensions')
+            ->add('duree')
+            ->add('taillefils')
             ->add('Photos', FileType::class, [
                 'multiple' => true,
                 'by_reference' => false,

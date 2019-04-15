@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>Puntos Y Vueltas | {% block title %}{% endblock %}</title>
+        <meta charset="UTF-8" />
+        <title>Puntos Y Vueltas{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="keywords" content="puntos y vueltas, laine, tricot" />
+        <meta name="description" content="" />
+        <meta name="author" content="Webdoy" />
+        <meta name="copyright" content="©Puntos Y Vueltas 2019" />
+        <link rel="canonical" href="https://puntosyvueltas.fr" />
+
+        <!-- FICHIERS -->
+        <link rel="icon" href="{{ asset('assets/img/fav.png') }}" />
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+        <link rel="stylesheet" href="http://overpass-30e2.kxcdn.com/overpass.css" />
+        <link
+                rel="stylesheet"
+                href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+                integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+                crossorigin="anonymous"
+        />
         {% block stylesheets %}{% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+
+    <body class="{% block bodyClass %}{% endblock %}" id="{% block bodyID %}{% endblock %}">
+        <div class="page">
+            <aside>
+                <h1 class="ft-s-30 ft-w-900 primary">Puntos y Vueltas</h1>
+                <nav>
+                    <ul class="ft-s-20 ft-w-200 grey">
+                        <li>
+                            <a href="{{ path('index') }}" {% if app.request.attributes.get('_route') == 'index' %} class="active"{% endif %}>Créations</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('contact') }}" {% if app.request.attributes.get('_route') == 'contact' %} class="active"{% endif %}>Contacts</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('atelier') }}" {% if app.request.attributes.get('_route') == 'atelier' %} class="active"{% endif %}>L'Atelier</a>
+                        </li>
+                    </ul>
+                </nav>
+                {% block info %}{% endblock %}
+            </aside>
+
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} | Contact{% endblock %}
+
+{% block bodyID %}contacts{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="container marg-top-40">
+            <a href="{{ path('index') }}" class="pad-10 dark-grey back"
+            ><i class="fas fa-angle-left"></i> Retour au créations</a
+            >
+            <h2 class="lighter-grey ft-s-30 ft-w-100">
+                <i class="primary">C</i>ontacts
+            </h2>
+            <div class="md-6 marg-top-100">
+                <ul class="ft-w-500">
+                    <li>
+                        <a href="mailto:puntosyvueltas@outlook.com" class="primary"
+                        ><img
+                                    src="{{ asset('assets/img/mail.svg') }}"
+                                    alt=""
+                                    width="50"
+                            />puntosyvueltas@outlook.com</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                                href="https://m.me/puntosyvueltas"
+                                target="_blank"
+                                class="light-blue"
+                        ><img
+                                    src="{{ asset('assets/img/messenger.svg') }}"
+                                    alt=""
+                                    width="50"
+                            />m.me/puntosyvueltas</a
+                        >
+                    </li>
+                </ul>
+                <br />
+                <p class="dark-grey ft-w-300 marg-top-50">
+                    Explication des conditions de contact. Lorem ipsum dolor sit amet,
+                    consectetur adipiscing elit. Nam pharetra metus sed imperdiet
+                    ornare. Morbi sagittis iaculis rhoncus. Curabitur semper quis dui
+                    sit amet laoreet. Etiam et blandit ex. Nam ornare tincidunt quam a
+                    placerat. Vivamus eget ligula in elit hendrerit sagittis.
+                </p>
+            </div>
+        </div>
+    </main>
+    {#
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <a href="{{ path('app_logout') }}">Se déconnecter</a>
+    {% else %}
+        <a href="{{ path('app_login') }}">Se connecter</a>
+    {% endif %}
+    #}
+{% endblock %}

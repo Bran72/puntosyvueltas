@@ -1,20 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block bodyClass %}index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <main>
+        <div class="container products marg-top-40">
+            <h2 class="lighter-grey ft-s-30 ft-w-100">
+                Création<i class="primary">s</i>
+            </h2>
 
-<div class="example-wrapper">
-    <h1>Bienvenue sur Puntos Y Vueltas !</h1>
+            <a href="{{ path('creation', {id: products[0].id}) }}" class="box md-6 new {% if products[0].surmesure == false %}on-sale{% endif %}">
+                <img src="{{ asset('assets/img/products/' ~ products[0].photos[0]) }}" alt="">
+            </a>
+            {% for product in products[1:] %}
+                <a href="{{ path('creation', {id: product.id}) }}" class="box md-3">
+                    <img src="{{ asset('assets/img/products/' ~ product.photos[0]) }}" alt="">
+                </a>
+            {% endfor %}
 
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/22792235_1945015689155597_1903190307863410356_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/12291161_1527207944269709_8068728350206290499_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/22792395_1945015439155622_898528150022725585_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/21318905_1915101162147050_8980862572290325259_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/13147680_1616021565388346_3274395307142009031_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/45728294_2228566937467136_3277745957420138496_n.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/45627623_2228566740800489_339109873000120320_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/14257720_1689207981403037_8644129737734699797_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+            <a class="box md-3">
+                <img
+                        src="{{asset('assets/img/products/23456266_1954080151582484_369467145202058534_o.jpg')}}"
+                        alt=""
+                />
+            </a>
+        </div>
+    </main>
+    {#
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         <a href="{{ path('app_logout') }}">Se déconnecter</a>
     {% else %}
         <a href="{{ path('app_login') }}">Se connecter</a>
     {% endif %}
+    #}
+{% endblock %}
+
+{% block info %}
+<div class="vente-info">
+    Les produits marqués d'un <span class="ico"></span> sont
+    <strong>disponibles à la vente.</strong> <br />
+    Contactez moi pour commander.
 </div>
 {% endblock %}
