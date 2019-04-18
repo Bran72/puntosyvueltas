@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Gamme;
 use App\Entity\Product;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -16,7 +17,7 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
+            ->add('titre', TextType::class, ['label' => 'Nom', 'attr'=>['placeholder'=>'cequetuveux']])
             ->add('description')
             ->add('Prix')
             ->add('Fil')
