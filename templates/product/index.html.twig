@@ -1,59 +1,68 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}| Administration des Produits{% endblock %}
+{% block title %}
+    | Administration des Produits
+{% endblock %}
 
-{% block bodyClass %}index{% endblock %}
+{% block bodyClass %}admin
+{% endblock %}
 
 {% block body %}
-<main>
-    <div class="container marg-top-40">
-        <h1>Product index</h1>
+    <main class="view-products-main">
+        <div class="container marg-top-40">
+            <h1 class="primary ft-s-15 ft-w-400 marg-bot-20">Liste des créations</h1>
+            <a href="{{ path('product_new') }}" class="btn">
+                <i class="fas fa-plus"></i>&nbsp; Créer un nouvel élément</a>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Gamme</th>
-                    <th>Titre</th>
-                    <th>Description</th>
-                    <th>Photos</th>
-                    <th>Prix</th>
-                    <th>Fil</th>
-                    <th>Surmesure</th>
-                    <th>actions</th>
-                </tr>
-            </thead>
-            <tbody>
+            <table class="table marg-top-20">
+                <thead>
+                    <tr>
+                        {#<th>Id</th>#}
+                        <th style="width: 150px;">Nom</th>
+                        <th style="width: auto; min-width: 300px;">Description</th>
+                        <th>Photos</th>
+                        <th>Gamme</th>
+                        <th>Fil</th>
+                        <th>Dispo.</th>
+                        <th>Prix</th>
+                        <th class="invisible"></th>
+                    </tr>
+                </thead>
+                <tbody>
 
-            {% for product in products %}
-                <tr>
-                    <td>{{ product.id }}</td>
-                    <td>{{ product.gamme ? product.gamme.nom : '' }}</td>
-                    <td>{{ product.titre }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>
-                    {% for photos in product.photos %}
-                        {{ photos }}
+                    {% for product in products %}
+                        <tr>
+                            {#<td>{{ product.id }}</td>#}
+                            <td class="titre">{{ product.titre }}</td>
+                            <td class="description">{{ product.description }}</td>
+                            <td>
+                                {% for photos in product.photos %}
+                                    <img src="{{ asset('assets/img/products/' ~ photos) }}" alt="">
+                                {% endfor %}
+                            </td>
+                            {#<td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>#}
+                            <td>{{ product.gamme ? product.gamme.nom : '' }}</td>
+                            <td>{{ product.fil }}</td>
+                            <td>{{ product.surmesure ? 'Non' : 'Oui' }}</td>
+                            <td>
+                                {{ product.surmesure ? '' : product.prix ~ '€'}}
+                            </td>
+                            <td class="invisible">
+                                <a href="{{ path('product_show', {'id': product.id}) }}">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{{ path('product_edit', {'id': product.id}) }}">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="9">Pas de créations</td>
+                        </tr>
                     {% endfor %}
-                    </td>
-                    {#<td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>#}
-                    <td>{{ product.Prix }}</td>
-                    <td>{{ product.Fil }}</td>
-                    <td>{{ product.Surmesure ? 'Yes' : 'No' }}</td>
-                    <td>
-                        <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                        <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="9">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-
-        <a href="{{ path('product_new') }}">Create new</a>
-    </div>
-</main>
+                </tbody>
+            </table>
+        </div>
+    </main>
 {% endblock %}
