@@ -6,34 +6,33 @@
     <main>
         <div class="product">
             <div class="container">
-                <br />
-                <br />
-                <a href="{{ path('index') }}" class="pad-10 dark-grey"
-                ><i class="fas fa-angle-left"></i> Retour au créations</a
-                >
-                <br />
+                <br/>
+                <br/>
+                <a href="{{ path('index') }}" class="pad-10 dark-grey">
+                    <i class="fas fa-angle-left"></i>
+                    Retour au créations</a>
+                <br/>
                 <div class="md-5 pictures marg-top-50">
                     <img class="principal" src="{{ asset('assets/img/products/' ~ product.photos[0]) }}" alt="">
-
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
                     {% for photo in product.photos[1:] %}
-                    <img src="{{ asset('assets/img/products/' ~ photo) }}" alt="" />
+                        <img src="{{ asset('assets/img/products/' ~ photo) }}" alt="" />
                     {% endfor %}
                 </div>
-                <div class="md-7 description marg-top-50">
+                <div class="md-7 description marg-top-50{% if product.surmesure == false %} on-sale{% endif %}">
                     <h2 class="ft-s-30 ft-w-100 primary title">{{ product.titre }}</h2>
-                    <br />
-                    <div class="ft-s-15 ft-w-800 med-grey category">{{ product.titre }}</div>
+                    <br/>
+                    <div class="ft-s-15 ft-w-800 med-grey category">{{ product.gamme.nom }}</div>
                     <div class="ft-s-12 ft-w-800 grey composition">
                         {{ product.fil }}
                     </div>
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
                     <p class="ft-w-300 dark-grey">
                         {{ product.description|e('html')|raw }}
                     </p>
-                    <hr />
+                    <hr/>
                     <table class="ft-w-800 dark-grey">
                         <tr>
                             <td>Catégorie</td>
@@ -58,20 +57,22 @@
             </div>
         </div>
         <div class="sider">
-            <a href="" class="active"><img src="{{ asset('assets/img/products/' ~ product.photos[0]) }}" alt=""></a>
+            <a class="active" href=""><img src="{{ asset('assets/img/products/' ~ product.photos[0]) }}" alt=""></a>
 
             {% for productAll in products %}
                 {% if productAll.id != product.id %}
-                    <a href="{{ path('creation', {id: product.id}) }}"><img src="{{ asset('assets/img/products/' ~ productAll.photos[0]) }}" alt="" /></a>
+                    {% if productAll.gamme.id == product.gamme.id %}
+                        <a href="{{ path('creation', {id: productAll.id}) }}"><img src="{{ asset('assets/img/products/' ~ productAll.photos[0]) }}" alt="" /></a>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
     </main>
     {#
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <a href="{{ path('app_logout') }}">Se déconnecter</a>
-    {% else %}
-        <a href="{{ path('app_login') }}">Se connecter</a>
-    {% endif %}
-    #}
+                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                        {% else %}
+                            <a href="{{ path('app_login') }}">Se connecter</a>
+                        {% endif %}
+                        #}
 {% endblock %}
