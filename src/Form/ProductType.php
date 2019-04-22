@@ -4,12 +4,13 @@ namespace App\Form;
 
 use App\Entity\Gamme;
 use App\Entity\Product;
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -37,16 +38,19 @@ class ProductType extends AbstractType
                 'required' => false,
                 'attr'     => [
                     'accept' => 'image/*',
-                ]
+                ],
             ]);
 
-        $builder->addEventListener(FormEvents::PRE_SUBMIT, function ($event) {
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
             $builder = $event->getForm(); // The FormBuilder
             $entity = $event->getData(); // The Form Object
 
             if ($entity["Photos"] == [] || !(isset($entity))) {
                 dump('empty photos: get them from Database');
-                $builder
+                $builder->remove("Photos");
+                $event->setData($builder);
+                return;
+                /*$builder
                     ->add('Photos', FileType::class, [
                         'multiple' => true,
                         'by_reference' => false,
@@ -55,12 +59,12 @@ class ProductType extends AbstractType
                             'accept' => 'image/*',
                         ]
                     ])
-                    ->add('titre');
+                    ->add('titre');*/
             } else {
                 dump('you can update photos');
             }
             dump($entity);
-            dump($entity["Photos"]);
+            //dump($entity["Photos"]);
         });
     }
 
