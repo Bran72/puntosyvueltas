@@ -17,10 +17,10 @@
                     <br/>
                     <br/>
                     {% for photo in product.photos[1:] %}
-                        <img src="{{ asset('assets/img/products/' ~ photo) }}" alt="" />
+                        <img src="{{ asset('assets/img/products/' ~ photo) }}" alt=""/>
                     {% endfor %}
                 </div>
-                <div class="md-7 description marg-top-50{% if product.surmesure == false %} on-sale{% endif %}">
+                <div class="md-7 description marg-top-50{% if product.surmesure == true %} on-sale{% endif %}">
                     <h2 class="ft-s-30 ft-w-100 primary title">{{ product.titre }}</h2>
                     <br/>
                     <div class="ft-s-15 ft-w-800 med-grey category">{{ product.gamme.nom }}</div>
@@ -43,14 +43,14 @@
                         <tr>
                             <td>Créé le</td>
                             <td class="grey pad">{{ product.date|date("d/m/Y") }}</td>
-                            <td class="pad">Disponible</td>
-                            <td class="grey">{{ product.prix }}€</td>
+                            <td class="pad">Temps travail</td>
+                            <td class="grey">{{ product.duree }}h</td>
                         </tr>
                         <tr>
                             <td>Dimensions</td>
                             <td class="grey pad">{{ product.dimensions }}</td>
-                            <td class="pad">Temps travail</td>
-                            <td class="grey">{{ product.duree }}h</td>
+                            <td class="pad">{{ product.surmesure == true ? 'Disponible' : '' }}</td>
+                            <td class="grey">{{ product.surmesure == true ? product.prix ~ '€' : '' }}</td>
                         </tr>
                     </table>
                 </div>
@@ -62,17 +62,17 @@
             {% for productAll in products %}
                 {% if productAll.id != product.id %}
                     {% if productAll.gamme.id == product.gamme.id %}
-                        <a href="{{ path('creation', {id: productAll.id}) }}"><img src="{{ asset('assets/img/products/' ~ productAll.photos[0]) }}" alt="" /></a>
+                        <a href="{{ path('creation', {id: productAll.id}) }}"><img src="{{ asset('assets/img/products/' ~ productAll.photos[0]) }}" alt=""/></a>
                     {% endif %}
                 {% endif %}
             {% endfor %}
         </div>
     </main>
     {#
-                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                            <a href="{{ path('app_logout') }}">Se déconnecter</a>
-                        {% else %}
-                            <a href="{{ path('app_login') }}">Se connecter</a>
-                        {% endif %}
-                        #}
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                            {% else %}
+                                <a href="{{ path('app_login') }}">Se connecter</a>
+                            {% endif %}
+                            #}
 {% endblock %}

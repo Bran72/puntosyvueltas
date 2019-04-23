@@ -1,13 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Gamme{% endblock %}
+{% block title %}Edit Gamme
+{% endblock %}
+
+{% block bodyClass %}admin
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Gamme</h1>
 
-    {{ include('gamme/_form.html.twig', {'button_label': 'Update'}) }}
+    <main>
+        <div class="container marg-top-40">
+            <h1 class="primary ft-s-15 ft-w-400 marg-bot-20">Modification
+                {{ gamme.nom }}</h1>
+            <a href="{{ path('gamme_index') }}" class="btn">
+                <i class="fas fa-angle-left"></i>&nbsp; Retourner à la liste</a>
 
-    <a href="{{ path('gamme_index') }}">back to list</a>
+            <div class="container marg-top-50" style="float: left;">
+                {{ include('gamme/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+            </div>
 
-    {{ include('gamme/_delete_form.html.twig') }}
+            {{ include('gamme/_delete_form.html.twig') }}
+        </div>
+    </main>
 {% endblock %}

@@ -9,23 +9,23 @@
                 Création<i class="primary">s</i>
             </h2>
 
-            <a href="{{ path('creation', {id: products[0].id}) }}" class="box md-6 new{% if products[0].surmesure == false %} on-sale{% endif %}">
+            <a href="{{ path('creation', {id: products[0].id}) }}" class="box md-6 new{% if products[0].surmesure == true %} on-sale{% endif %}">
                 <img src="{{ asset('assets/img/products/' ~ products[0].photos[0]) }}" alt="">
             </a>
             {% for product in products[1:] %}
-                <a href="{{ path('creation', {id: product.id}) }}" class="box md-3{% if product.surmesure == false %} on-sale{% endif %}">
+                <a href="{{ path('creation', {id: product.id}) }}" class="box md-3{% if product.surmesure == true %} on-sale{% endif %}">
                     <img src="{{ asset('assets/img/products/' ~ product.photos[0]) }}" alt="">
                 </a>
             {% endfor %}
         </div>
     </main>
     {#
-                                                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                                                        <a href="{{ path('app_logout') }}">Se déconnecter</a>
-                                                                    {% else %}
-                                                                        <a href="{{ path('app_login') }}">Se connecter</a>
-                                                                    {% endif %}
-                                                                    #}
+                                                                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                                                    <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                                                                                {% else %}
+                                                                                    <a href="{{ path('app_login') }}">Se connecter</a>
+                                                                                {% endif %}
+                                                                                #}
 {% endblock %}
 
 {% block info %}

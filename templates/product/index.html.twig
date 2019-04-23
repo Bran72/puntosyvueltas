@@ -43,9 +43,9 @@
                             {#<td>{{ product.Photos ? product.Photos|join(', ') : '' }}</td>#}
                             <td>{{ product.gamme ? product.gamme.nom : '' }}</td>
                             <td>{{ product.fil }}</td>
-                            <td>{{ product.surmesure ? 'Non' : 'Oui' }}</td>
+                            <td>{{ product.surmesure ? 'Oui' : 'Non' }}</td>
                             <td>
-                                {{ product.surmesure ? '' : product.prix ~ '€'}}
+                                {{ product.surmesure ? product.prix ~ '€' : '' }}
                             </td>
                             <td class="invisible">
                                 <a href="{{ path('product_show', {'id': product.id}) }}">
@@ -63,6 +63,8 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <br>
+            <a href="{{ path('gamme_index') }}" class="btn">Gammes</a>
         </div>
     </main>
 {% endblock %}

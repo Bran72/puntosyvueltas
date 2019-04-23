@@ -51,12 +51,13 @@ class GammeController extends AbstractController
     /**
      * @Route("/{id}", name="gamme_show", methods={"GET"})
      */
-    public function show(Gamme $gamme): Response
+    /* public function show(Gamme $gamme): Response
     {
         return $this->render('gamme/show.html.twig', [
             'gamme' => $gamme,
         ]);
     }
+    */
 
     /**
      * @Route("/{id}/edit", name="gamme_edit", methods={"GET","POST"})
@@ -85,7 +86,7 @@ class GammeController extends AbstractController
      */
     public function delete(Request $request, Gamme $gamme): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$gamme->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $gamme->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($gamme);
             $entityManager->flush();

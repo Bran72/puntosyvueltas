@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Gamme{% endblock %}
+{% block title %}New Gamme
+{% endblock %}
+
+{% block bodyClass %}admin
+{% endblock %}
 
 {% block body %}
-    <h1>Create new Gamme</h1>
 
-    {{ include('gamme/_form.html.twig') }}
+    <main>
+        <div class="container marg-top-40">
+            <h1 class="primary ft-s-15 ft-w-400 marg-bot-20">Créer une nouvelle gamme</h1>
+            <a href="{{ path('gamme_index') }}" class="btn">
+                <i class="fas fa-angle-left"></i>&nbsp; Retourner à la liste</a>
 
-    <a href="{{ path('gamme_index') }}">back to list</a>
+            <div class="container marg-top-50" style="float: left;">
+                {{ include('gamme/_form.html.twig') }}
+            </div>
+        </div>
+    </main>
 {% endblock %}

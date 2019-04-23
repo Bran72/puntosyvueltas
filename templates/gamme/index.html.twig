@@ -2,36 +2,45 @@
 
 {% block title %}Gamme index{% endblock %}
 
+{% block bodyClass %}admin{% endblock %}
+
 {% block body %}
-    <h1>Gamme index</h1>
+    <main class="view-products-main">
+        <div class="container marg-top-40">
+            <h1 class="primary ft-s-15 ft-w-400 marg-bot-20">Liste des gammes</h1>
+            <a href="{{ path('gamme_new') }}" class="btn">
+                <i class="fas fa-plus"></i>&nbsp; Créer un nouvelle gamme</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for gamme in gammes %}
-            <tr>
-                <td>{{ gamme.id }}</td>
-                <td>{{ gamme.nom }}</td>
-                <td>
-                    <a href="{{ path('gamme_show', {'id': gamme.id}) }}">show</a>
-                    <a href="{{ path('gamme_edit', {'id': gamme.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('gamme_new') }}">Create new</a>
-    <br>
-    <a href="{{ path('product_index') }}">Go To Product</a>
+            <table class="table marg-top-20">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th class="invisible"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for gamme in gammes %}
+                        <tr>
+                            <td>{{ gamme.nom }}</td>
+                            <td
+                                class="invisible">
+                                {#<a href="{{ path('gamme_show', {'id': gamme.id}) }}">
+                                                                                                                                                                    <i class="fas fa-eye"></i>
+                                                                                                                                                                </a>#}
+                                <a href="{{ path('gamme_edit', {'id': gamme.id}) }}">
+                                    <i class="fas fa-pen"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td class="invisible" colspan="3">Pas de gamme enregistré</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <a href="{{ path('product_index') }}" class="btn">Créations</a>
+        </div>
+    </main>
 {% endblock %}

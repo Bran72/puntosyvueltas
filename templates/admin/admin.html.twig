@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}| Administrateur{% endblock %}
+{% block title %}| Administrateur
+{% endblock %}
 
-{% block bodyClass %}index{% endblock %}
+{% block bodyClass %}index
+{% endblock %}
 
 {% block body %}
-<main>
-    <div class="container marg-top-40">
-        <a href="{{ path('product_index') }}" class="btn">Accéder aux produits</a>
-        {#<a href="{{ path('gamme_index') }}">Accéder aux gammes</a>#}
-    </div>
-</main>
+    <main>
+        <div class="container marg-top-40">
+            <a href="{{ path('product_index') }}" class="btn">Accéder aux produits</a>
+            <a href="{{ path('gamme_index') }}" class="btn">Accéder aux gammes</a>
+        </div>
+    </main>
 {% endblock %}
