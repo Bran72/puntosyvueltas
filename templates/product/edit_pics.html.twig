@@ -9,17 +9,13 @@
     <div class="container marg-top-40">
         <h1 class="primary ft-s-15 ft-w-400 marg-bot-20">Modification de <span class="dark-grey">{{ product.titre }}</span></h1>
         <a href="{{ path('product_index') }}" class="btn"><i class="fas fa-angle-left"></i>&nbsp; Retourner à la liste</a>
-        {{ include('product/_delete_form.html.twig') }}
 
         <div class="container marg-top-50" style="float: left;">
-            {{ include('product/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-<<<<<<< HEAD
-            <a href="{{ path('product_edit_pics', {id: product.id}) }}">Modifier les photos</a>
-        </div>
-=======
-        </div>
+            <h3 style="color: red">Attention: modifier les photos remplacera celles existantes</h3>
+            <p>{{ product.titre }}</p>
 
->>>>>>> 451d8fdc9e3da61687be85e4703e7e126b2d3429
+            {{ include('product/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+        </div>
     </div>
 </main>
 {% endblock %}

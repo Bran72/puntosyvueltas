@@ -8,7 +8,9 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -36,16 +38,27 @@ class ProductType extends AbstractType
                 'required' => false,
                 'attr'     => [
                     'accept' => 'image/*',
+<<<<<<< HEAD
+                ],
+=======
                 ]
+>>>>>>> 451d8fdc9e3da61687be85e4703e7e126b2d3429
             ]);
 
-        $builder->addEventListener(FormEvents::PRE_SUBMIT, function ($event) {
+        $builder->addEventListener(FormEvents::PRE_SUBMIT, function (FormEvent $event) {
             $builder = $event->getForm(); // The FormBuilder
             $entity = $event->getData(); // The Form Object
 
             if ($entity["Photos"] == [] || !(isset($entity))) {
                 dump('empty photos: get them from Database');
+<<<<<<< HEAD
+                $builder->remove("Photos");
+                $event->setData($builder);
+                return;
+                /*$builder
+=======
                 $builder
+>>>>>>> 451d8fdc9e3da61687be85e4703e7e126b2d3429
                     ->add('Photos', FileType::class, [
                         'multiple' => true,
                         'by_reference' => false,
@@ -54,12 +67,16 @@ class ProductType extends AbstractType
                             'accept' => 'image/*',
                         ]
                     ])
+<<<<<<< HEAD
+                    ->add('titre');*/
+=======
                     ->add('titre');
+>>>>>>> 451d8fdc9e3da61687be85e4703e7e126b2d3429
             } else {
                 dump('you can update photos');
             }
             dump($entity);
-            dump($entity["Photos"]);
+            //dump($entity["Photos"]);
         });
     }
 
