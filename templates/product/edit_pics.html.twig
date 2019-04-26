@@ -1,21 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} | Administration des Produits{% endblock %}
+{% block title %}
+    | Administration des Produits
+{% endblock %}
 
 {% block bodyClass %}admin{% endblock %}
 
 {% block body %}
-<main>
-    <div class="container marg-top-40">
-        <h1 class="primary ft-s-15 ft-w-400 marg-bot-20">Modification de <span class="dark-grey">{{ product.titre }}</span></h1>
-        <a href="{{ path('product_index') }}" class="btn"><i class="fas fa-angle-left"></i>&nbsp; Retourner à la liste</a>
+    <main>
+        <div class="container marg-top-40">
+            <h1 class="primary ft-s-15 ft-w-400 marg-bot-20">Modification de
+                <span class="dark-grey">{{ product.titre }}</span>
+            </h1>
+            <a href="{{ path('product_index') }}" class="btn">
+                <i class="fas fa-angle-left"></i>&nbsp; Retourner à la liste</a>
 
-        <div class="container marg-top-50" style="float: left;">
-            <h3 style="color: red">Attention: modifier les photos remplacera celles existantes</h3>
-            <p>{{ product.titre }}</p>
+            <div class="container marg-top-50" style="float: left;">
+                <h3 style="color: red">Attention: modifier les photos remplacera celles existantes</h3>
+                <p>{{ product.titre }}</p>
 
-            {{ include('product/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+                {{ include('product/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+            </div>
         </div>
-    </div>
-</main>
+    </main>
+
+    <a href="{{ path('index') }}" class="quit btn">Revenir au site</a>
 {% endblock %}

@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Gamme
-{% endblock %}
+{% block title %}Edit Gamme{% endblock %}
 
-{% block bodyClass %}admin
-{% endblock %}
+{% block bodyClass %}admin{% endblock %}
 
 {% block body %}
 
@@ -22,4 +20,6 @@
             {{ include('gamme/_delete_form.html.twig') }}
         </div>
     </main>
+
+    <a href="{{ path('index') }}" class="quit btn">Revenir au site</a>
 {% endblock %}

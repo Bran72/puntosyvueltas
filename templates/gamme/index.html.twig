@@ -25,8 +25,8 @@
                             <td
                                 class="invisible">
                                 {#<a href="{{ path('gamme_show', {'id': gamme.id}) }}">
-                                                                                                                                                                    <i class="fas fa-eye"></i>
-                                                                                                                                                                </a>#}
+                                                                                                                                                                                                                                    <i class="fas fa-eye"></i>
+                                                                                                                                                                                                                                </a>#}
                                 <a href="{{ path('gamme_edit', {'id': gamme.id}) }}">
                                     <i class="fas fa-pen"></i>
                                 </a>
@@ -43,4 +43,6 @@
             <a href="{{ path('product_index') }}" class="btn">Créations</a>
         </div>
     </main>
+
+    <a href="{{ path('index') }}" class="quit btn">Revenir au site</a>
 {% endblock %}

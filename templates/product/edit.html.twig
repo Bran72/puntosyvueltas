@@ -4,8 +4,7 @@
     | Administration des Produits
 {% endblock %}
 
-{% block bodyClass %}admin
-{% endblock %}
+{% block bodyClass %}admin{% endblock %}
 
 {% block body %}
     <main>
@@ -23,4 +22,6 @@
             </div>
         </div>
     </main>
+
+    <a href="{{ path('index') }}" class="quit btn">Revenir au site</a>
 {% endblock %}

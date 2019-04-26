@@ -4,8 +4,7 @@
     | Administration des Produits
 {% endblock %}
 
-{% block bodyClass %}admin
-{% endblock %}
+{% block bodyClass %}admin{% endblock %}
 
 {% block body %}
     <main class="view-products-main">
@@ -67,4 +66,6 @@
             <a href="{{ path('gamme_index') }}" class="btn">Gammes</a>
         </div>
     </main>
+
+    <a href="{{ path('index') }}" class="quit btn">Revenir au site</a>
 {% endblock %}
