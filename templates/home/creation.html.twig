@@ -49,8 +49,8 @@
                         <tr>
                             <td>Dimensions</td>
                             <td class="grey pad">{{ product.dimensions }}</td>
-                            <td class="pad">{{ product.surmesure == true ? 'Disponible' : '' }}</td>
-                            <td class="grey">{{ product.surmesure == true ? product.prix ~ '€' : '' }}</td>
+                            <td class="pad">{{ product.surmesure == false ? 'Disponible' : '' }}</td>
+                            <td class="grey">{{ product.surmesure == false ? product.prix ~ '€' : '' }}</td>
                         </tr>
                     </table>
                 </div>
